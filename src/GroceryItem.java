@@ -14,7 +14,10 @@ public class GroceryItem {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length()>=2)
+            this.name = name;
+        else
+            throw new IllegalArgumentException("name must have at least 2 characters");
     }
 
     public double getPrice() {
