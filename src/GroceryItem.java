@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class GroceryItem {
     private String name;
     private double price;
@@ -25,7 +28,10 @@ public class GroceryItem {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price>=0 && price<=150)
+            this.price = price;
+        else
+            throw new IllegalArgumentException("price must be 0-150");
     }
 
     public String getCategory() {
@@ -33,6 +39,16 @@ public class GroceryItem {
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        List<String> categories = Arrays.asList("vegetable","fruit","meat","fish","dairy","bread",
+                                                   "condiments");
+        if (categories.contains(category.toLowerCase()))
+            this.category = category;
+        else
+            throw new IllegalArgumentException(category + " is not valid. Use one of :"+categories);
+    }
+
+    public String toString()
+    {
+        return String.format("%s, category: %s, price: $%.2f",name,category,price);
     }
 }
