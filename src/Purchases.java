@@ -21,4 +21,31 @@ public class Purchases {
         }
         return total;
     }
+
+    public String getGroceryNames()
+    {
+        String groceries = "";
+        for (GroceryItem groceryItem:purchases)
+        {
+            groceries += groceryItem.getName() + ", ";
+        }
+        return groceries.substring(0,groceries.length()-2);
+    }
+
+    public String getCategories()
+    {
+        String groceries = "";
+        for (GroceryItem groceryItem:purchases)
+        {
+            groceries += groceryItem.getCategory() + ", ";
+        }
+        return groceries.substring(0,groceries.length()-2);
+    }
+
+    public String toString()
+    {
+        return String.format("The grocery list has %d items with a total cost of $%.2f",
+                            purchases.size(), getTotalPrice());
+    }
+
 }
